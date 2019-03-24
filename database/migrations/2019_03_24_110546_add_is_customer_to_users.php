@@ -28,7 +28,7 @@ class AddIsCustomerToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumns(['is_customer']);
+            
         });
     }
 }
