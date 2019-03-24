@@ -30,7 +30,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                    $entry->isScheduledTask() ||
                    $entry->hasMonitoredTag();
         });
-    }
+  //  }
 
     /**
      * Prevent sensitive request details from being logged by Telescope.
