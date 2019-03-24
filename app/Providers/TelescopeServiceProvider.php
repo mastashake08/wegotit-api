@@ -20,7 +20,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
       //  $this->hideSensitiveRequestDetails();
 
-    //    Telescope::filter(function (IncomingEntry $entry) {
+    /*    Telescope::filter(function (IncomingEntry $entry) {
             if ($this->app->isLocal()) {
                 return true;
             }
@@ -29,8 +29,8 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                    $entry->isFailedJob() ||
                    $entry->isScheduledTask() ||
                    $entry->hasMonitoredTag();
-        });
-  //  }
+        }); */
+    }
 
     /**
      * Prevent sensitive request details from being logged by Telescope.
