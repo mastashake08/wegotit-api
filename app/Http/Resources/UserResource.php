@@ -14,7 +14,7 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-      $attr = Arr::add(parent::toArray($request),['orders' =>[]]);
+      //$attr = Arr::add(parent::toArray($request),['orders' =>[]]);
         return parent::toArray($request);
     }
 }
