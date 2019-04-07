@@ -175,4 +175,11 @@ class UserController extends Controller
       $user->save();
       return response()->json(new \App\Http\Resources\UserResource($user));
     }
+
+    public function changeStatus(Request $request){
+      $user = $request->user();
+      $user->status = $request->status;
+      $user->save();
+      return response()->json(new UserResource($user));
+    }
   }
