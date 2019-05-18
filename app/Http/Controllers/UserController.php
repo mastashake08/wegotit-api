@@ -50,12 +50,18 @@ class UserController extends Controller
 
               return response()->json(['error'=>$validator->errors()], 401);
           }
+          \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+          $customer = \Stripe\Customer::create([
+            "email" => $request->email
+          ]);
 
           $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'is_customer' =>  true,
+            'customer_id' => $customer->id
           ]);
           $http = new \GuzzleHttp\Client;
           $response = $http->post(env('APP_URL').'/oauth/token', [
@@ -181,5 +187,14 @@ class UserController extends Controller
       $user->status = $request->status;
       $user->save();
       return response()->json(new UserResource($user));
+    }
+    
+    public function updateCard(Request $request){
+      $user = $request->user();
+      \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+      $customer = \Stripe\Customer::retrieve($user->customer_id);
+      $customer->source = $request->stripe_token;
+      $customer->save();
+      return response()->json(new \App\Http\Resources\UserResource($user));
     }
   }
