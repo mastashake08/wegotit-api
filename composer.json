@@ -14,7 +14,8 @@
         "laravel/passport": "^7.2",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-query-builder": "^1.17"
+        "spatie/laravel-query-builder": "^1.17",
+        "stripe/stripe-php": "^6.35"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

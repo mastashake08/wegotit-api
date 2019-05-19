@@ -3,7 +3,8 @@
 namespace WeGotIt\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use WeGotIt\Order;
+use WeGotIt\Http\Resources\OrderResource;
 class OrderController extends Controller
 {
     /**
@@ -35,6 +36,18 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+
+        $business = \WeGotIt\Business::findOrFail($request->business_id);
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $customer = \Stripe\Customer::retrieve($request->user()->customer_id);
+
+        $charge = \Stripe\Charge::create(['amount' => $request->price * 100 , 'currency' => 'usd', 'source' => $customer->source]);
+        $order = $request->user()->orders()->create([
+          'price' => $request->price,
+          'business_id' => $business->id,
+          'description' => $request->items
+        ]);
+        return response()->json(new OrderResource($order));
     }
 
     /**
