@@ -14,9 +14,14 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
+
             $table->bigIncrements('id');
-            $table->integer('business_id')->unsigned();
+            $table->unsignedBigInteger('business_id');
             $table->foreign('business_id')->references('id')->on('businesses');
+            $table->string('name');
+            $table->decimal('price');
+            $table->string('type');
+            $table->string('description');
             $table->timestamps();
         });
     }

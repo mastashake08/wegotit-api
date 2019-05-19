@@ -3,8 +3,8 @@
 namespace WeGotIt\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Arr;
-class UserResource extends JsonResource
+
+class OrderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,7 +14,6 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-      //$attr = Arr::add(parent::toArray($request),['orders' =>[]]);
         return parent::toArray($request);
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WeGotIt\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Notifications\NewAccount;
+use WeGotIt\User;
+use WeGotIt\Notifications\NewAccount;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
-use App\Http\Resources\UserResource;
+use WeGotIt\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -179,7 +179,7 @@ class UserController extends Controller
       $user->name = $request->name;
 
       $user->save();
-      return response()->json(new \App\Http\Resources\UserResource($user));
+      return response()->json(new \WeGotIt\Http\Resources\UserResource($user));
     }
 
     public function changeStatus(Request $request){
@@ -195,6 +195,6 @@ class UserController extends Controller
       $customer = \Stripe\Customer::retrieve($user->customer_id);
       $customer->source = $request->stripe_token;
       $customer->save();
-      return response()->json(new \App\Http\Resources\UserResource($user));
+      return response()->json(new \WeGotIt\Http\Resources\UserResource($user));
     }
   }

@@ -3,24 +3,17 @@
 namespace WeGotIt\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\QueryBuilder\QueryBuilder;
-use WeGotIt\Business;
-use WeGotIt\Http\Resources\BusinessResource;
 
-class BusinessController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $businesses = QueryBuilder::for(Business::class)
-                  ->allowedFilters('name','city','state','zip')
-                  ->get();
-        return response()->json(BusinessResource::collection($businesses));
     }
 
     /**
@@ -42,8 +35,6 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         //
-        $business = Business::create($request->all());
-        return response()->json(new BusinessResource($business));
     }
 
     /**
@@ -55,8 +46,6 @@ class BusinessController extends Controller
     public function show($id)
     {
         //
-        $business = Buiness::findOrFail($id);
-        return response()->json(new BusinessResource($business));
     }
 
     /**
@@ -80,10 +69,6 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $business = Business::findOrFail($id);
-        $business->fill($request->all())->save();
-        return response()->json(new BusinessResource($business));
-
     }
 
     /**
@@ -95,6 +80,5 @@ class BusinessController extends Controller
     public function destroy($id)
     {
         //
-        Business::destroy($id);
     }
 }
