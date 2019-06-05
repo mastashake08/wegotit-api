@@ -6,9 +6,12 @@
  */
 
 require('./bootstrap');
-
+import {store} from './store'
 window.Vue = require('vue');
-
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
+// index.js or main.js
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,7 +23,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('venues', require('./components/VenueComponent.vue').default);
+Vue.component('orders', require('./components/OrderComponent.vue').default);
+Vue.component('home',require('./components/HomeComponent.vue').default);
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
@@ -42,5 +47,6 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store: store
 });
