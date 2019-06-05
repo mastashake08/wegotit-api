@@ -131,8 +131,8 @@
 								</header>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
+										<li><a href="{{url('/home')}}" class="button primary">Get Started</a></li>
+										<li><a href="{{url('/about')}}" class="button">Learn More</a></li>
 									</ul>
 								</footer>
 							</section>
