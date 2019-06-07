@@ -15,6 +15,7 @@ class BusinessSeeder extends Seeder
         factory(WeGotIt\Business::class, 50)->create()->each(function ($business) {
           for($i =0; $i< 20; ++$i){
             $business->items()->save(factory(WeGotIt\Item::class)->make());
+            $business->orders()->save(factory(WeGotIt\Order::class)->make());
           }
         });
     }

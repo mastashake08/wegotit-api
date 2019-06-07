@@ -12,9 +12,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        return response()->json(OrderResource::collection(Order::all()));
     }
 
     /**
@@ -93,5 +94,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+        Order::destroy($id);
+        return response()->json(['message' => 'Success']);
     }
 }

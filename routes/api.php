@@ -21,3 +21,4 @@ Route::post('register', 'UserController@register');
 Route::post('change-status','UserController@changeStatus')->middleware('auth:api');
 
 Route::resource('/venues','BusinessController')->middleware('auth:api');
+Route::resource('/orders','OrderController')->middleware('auth:api');

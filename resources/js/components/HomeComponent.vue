@@ -1,7 +1,6 @@
 <template>
   <div>
   <venues></venues>
-  <orders v-if="user.type == 'manager'"></orders>
 </div>
 </template>
 <script>

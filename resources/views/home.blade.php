@@ -4,15 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    <home></home>
-                </div>
-            </div>
+            <home></home>        
         </div>
     </div>
 </div>
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <orders></orders>
+        </div>
+    </div>
+</div>
 @endsection

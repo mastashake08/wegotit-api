@@ -6,14 +6,22 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     venues: [],
-    user: {}
+    user: {},
+    orders: []
   },
   mutations: {
     getVenues(state,venues){
       state.venues = venues
+      console.log(venues)
     },
-    getVenues(state,user){
+    getuser(state,user){
       state.user = user
+    },
+    getOrders(state,orders){
+      state.orders = orders
+    },
+    deleteOrder(state,index){
+      state.orders.splice(index,1);
     }
   },
   actions: {
@@ -26,6 +34,16 @@ export const store = new Vuex.Store({
       axios.get('/api/user').then(data => {
         context.commit('getUser',data.data)
       })
+    },
+    getOrders(context){
+      axios.get('/api/orders').then(data => {
+        context.commit('getOrders', data.data)
+      })
+    },
+    deleteOrder(context,prop){
+      axios.delete('/api/orders/'+prop.item.id).then(data => {
+        context.commit('deleteOrder', prop.index)
+      })
     }
   },
   getters: {
@@ -34,6 +52,9 @@ export const store = new Vuex.Store({
     },
     user: state => {
       return state.user
+    },
+    orders: state => {
+      return state.orders
     }
   }
 })

@@ -5,7 +5,20 @@
     class="elevation-1"
   >
     <template v-slot:items="props">
-      <td><a :href="'/venues/'+props.item.id">{{ props.item.name }}</a></td>
+      <td>{{ props.item.price }}</td>
+      <td>{{ props.item.description }}</td>
+      <td>{{ props.item.type }}</td>
+      <td>
+        <div class="form-group">
+          <button class="btn btn-sm btn-primary">Complete</button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-sm btn-info">Take Over</button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-sm btn-danger" @click="deleteOrder(props)">Delete</button>
+        </div>
+      </td>
     </template>
   </v-data-table>
 </template>
@@ -17,26 +30,44 @@
       return {
         headers: [
           {
-            text: 'Name',
+            text: 'Price',
             align: 'left',
             sortable: false,
-            value: 'name'
+            value: 'price'
+          },
+          {
+            text: 'Description',
+            align: 'left',
+            sortable: false,
+            value: 'description'
+          },
+          {
+            text: 'Type',
+            align: 'left',
+            sortable: false,
+            value: 'type'
+          },
+          {
+            text: 'Actions',
+            align: 'left',
+            sortable: false,
+            value: 'actions'
           },
         ],
 
       }
     },
     created(){
-      this.getVenues();
+      this.getOrders();
     },
         mounted() {
             console.log('Component mounted.')
         },
         computed:{
-          ...mapGetters(['venues'])
+          ...mapGetters(['orders'])
         },
         methods: {
-          ...mapActions(['getVenues'])
+          ...mapActions(['getOrders','deleteOrder'])
         }
     }
 </script>

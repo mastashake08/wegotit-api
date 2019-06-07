@@ -6,6 +6,10 @@
   >
     <template v-slot:items="props">
       <td><a :href="'/venues/'+props.item.id">{{ props.item.name }}</a></td>
+      <td class="text-xs-right">{{ props.item.city }}</td>
+      <td class="text-xs-right">{{ props.item.state }}</td>
+      <td class="text-xs-right">{{ props.item.zip }}</td>
+      <td class="text-xs-right">{{ props.item.country }}</td>
     </template>
   </v-data-table>
 </template>
@@ -21,6 +25,30 @@
             align: 'left',
             sortable: false,
             value: 'name'
+          },
+          {
+            text: 'City',
+            align: 'left',
+            sortable: false,
+            value: 'city'
+          },
+          {
+            text: 'State',
+            align: 'left',
+            sortable: false,
+            value: 'state'
+          },
+          {
+            text: 'Zip',
+            align: 'left',
+            sortable: false,
+            value: 'zip'
+          },
+          {
+            text: 'Country',
+            align: 'left',
+            sortable: false,
+            value: 'country'
           },
         ],
 

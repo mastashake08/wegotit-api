@@ -12,4 +12,8 @@ class Business extends Model
     public function items(){
       return $this->hasMany('WeGotIt\Item');
     }
+
+    public function orders(){
+      return $this->hasMany('WeGotIt\Order');
+    }
 }

@@ -1775,7 +1775,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -1816,26 +1815,54 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       headers: [{
-        text: 'Name',
+        text: 'Price',
         align: 'left',
         sortable: false,
-        value: 'name'
+        value: 'price'
+      }, {
+        text: 'Description',
+        align: 'left',
+        sortable: false,
+        value: 'description'
+      }, {
+        text: 'Type',
+        align: 'left',
+        sortable: false,
+        value: 'type'
+      }, {
+        text: 'Actions',
+        align: 'left',
+        sortable: false,
+        value: 'actions'
       }]
     };
   },
   created: function created() {
-    this.getVenues();
+    this.getOrders();
   },
   mounted: function mounted() {
     console.log('Component mounted.');
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['venues'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getVenues']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['orders'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getOrders', 'deleteOrder']))
 });
 
 /***/ }),
@@ -1866,6 +1893,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1875,6 +1906,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         align: 'left',
         sortable: false,
         value: 'name'
+      }, {
+        text: 'City',
+        align: 'left',
+        sortable: false,
+        value: 'city'
+      }, {
+        text: 'State',
+        align: 'left',
+        sortable: false,
+        value: 'state'
+      }, {
+        text: 'Zip',
+        align: 'left',
+        sortable: false,
+        value: 'zip'
+      }, {
+        text: 'Country',
+        align: 'left',
+        sortable: false,
+        value: 'country'
       }]
     };
   },
@@ -38462,15 +38513,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("venues"),
-      _vm._v(" "),
-      _vm.user.type == "manager" ? _c("orders") : _vm._e()
-    ],
-    1
-  )
+  return _c("div", [_c("venues")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38502,9 +38545,38 @@ var render = function() {
         key: "items",
         fn: function(props) {
           return [
+            _c("td", [_vm._v(_vm._s(props.item.price))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(props.item.description))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(props.item.type))]),
+            _vm._v(" "),
             _c("td", [
-              _c("a", { attrs: { href: "/venues/" + props.item.id } }, [
-                _vm._v(_vm._s(props.item.name))
+              _c("div", { staticClass: "form-group" }, [
+                _c("button", { staticClass: "btn btn-sm btn-primary" }, [
+                  _vm._v("Complete")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("button", { staticClass: "btn btn-sm btn-info" }, [
+                  _vm._v("Take Over")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-danger",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteOrder(props)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
               ])
             ])
           ]
@@ -38547,6 +38619,22 @@ var render = function() {
               _c("a", { attrs: { href: "/venues/" + props.item.id } }, [
                 _vm._v(_vm._s(props.item.name))
               ])
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.city))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.state))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.zip))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-xs-right" }, [
+              _vm._v(_vm._s(props.item.country))
             ])
           ]
         }
@@ -79370,8 +79458,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -79379,15 +79465,24 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     venues: [],
-    user: {}
+    user: {},
+    orders: []
   },
-  mutations: _defineProperty({
+  mutations: {
     getVenues: function getVenues(state, venues) {
       state.venues = venues;
+      console.log(venues);
+    },
+    getuser: function getuser(state, user) {
+      state.user = user;
+    },
+    getOrders: function getOrders(state, orders) {
+      state.orders = orders;
+    },
+    deleteOrder: function deleteOrder(state, index) {
+      state.orders.splice(index, 1);
     }
-  }, "getVenues", function getVenues(state, user) {
-    state.user = user;
-  }),
+  },
   actions: {
     getVenues: function getVenues(context) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/venues').then(function (data) {
@@ -79398,6 +79493,16 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/user').then(function (data) {
         context.commit('getUser', data.data);
       });
+    },
+    getOrders: function getOrders(context) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/orders').then(function (data) {
+        context.commit('getOrders', data.data);
+      });
+    },
+    deleteOrder: function deleteOrder(context, prop) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/api/orders/' + prop.item.id).then(function (data) {
+        context.commit('deleteOrder', prop.index);
+      });
     }
   },
   getters: {
@@ -79406,6 +79511,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     user: function user(state) {
       return state.user;
+    },
+    orders: function orders(state) {
+      return state.orders;
     }
   }
 });
