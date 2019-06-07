@@ -10,7 +10,7 @@
       <td>{{ props.item.type }}</td>
       <td>
         <div class="form-group">
-          <button class="btn btn-sm btn-primary">Complete</button>
+          <button class="btn btn-sm btn-primary" @click="completeOrder(props)">Complete</button>
         </div>
         <div class="form-group">
           <button class="btn btn-sm btn-info">Take Over</button>
@@ -67,7 +67,7 @@
           ...mapGetters(['orders'])
         },
         methods: {
-          ...mapActions(['getOrders','deleteOrder'])
+          ...mapActions(['getOrders', 'deleteOrder', 'completeOrder'])
         }
     }
 </script>

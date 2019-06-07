@@ -44,6 +44,11 @@ export const store = new Vuex.Store({
       axios.delete('/api/orders/'+prop.item.id).then(data => {
         context.commit('deleteOrder', prop.index)
       })
+    },
+    completeOrder(context, prop){
+      axios.post('/api/orders/complete/'+prop.item.id).then(data => {
+        context.commit('deleteOrder', prop.index)
+      })
     }
   },
   getters: {

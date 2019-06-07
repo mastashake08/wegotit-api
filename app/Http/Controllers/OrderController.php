@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         //
-        return response()->json(OrderResource::collection(Order::all()));
+        return response()->json(OrderResource::collection(Order::where('is_complete', false)->get()));
     }
 
     /**
@@ -96,5 +96,11 @@ class OrderController extends Controller
         //
         Order::destroy($id);
         return response()->json(['message' => 'Success']);
+    }
+
+    public function complete($id){
+      $order = Order::findOrFail($id);
+      $order->is_complete = true;
+      $order->save();
     }
 }

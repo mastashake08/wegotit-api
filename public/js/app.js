@@ -1862,7 +1862,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     console.log('Component mounted.');
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['orders'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getOrders', 'deleteOrder']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getOrders', 'deleteOrder', 'completeOrder']))
 });
 
 /***/ }),
@@ -38553,9 +38553,18 @@ var render = function() {
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "form-group" }, [
-                _c("button", { staticClass: "btn btn-sm btn-primary" }, [
-                  _vm._v("Complete")
-                ])
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    on: {
+                      click: function($event) {
+                        return _vm.completeOrder(props)
+                      }
+                    }
+                  },
+                  [_vm._v("Complete")]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -79501,6 +79510,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     deleteOrder: function deleteOrder(context, prop) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/api/orders/' + prop.item.id).then(function (data) {
+        context.commit('deleteOrder', prop.index);
+      });
+    },
+    completeOrder: function completeOrder(context, prop) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/orders/complete/' + prop.item.id).then(function (data) {
         context.commit('deleteOrder', prop.index);
       });
     }
