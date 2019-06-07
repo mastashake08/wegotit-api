@@ -1,8 +1,19 @@
 <template>
+  <v-card>
+   <v-card-title>
+     <v-text-field
+       v-model="search"
+       append-icon="search"
+       label="Search"
+       single-line
+       hide-details
+     ></v-text-field>
+   </v-card-title>
   <v-data-table
     :headers="headers"
     :items="venues"
     class="elevation-1"
+    :search="search"
   >
     <template v-slot:items="props">
       <td><a :href="'/venues/'+props.item.id">{{ props.item.name }}</a></td>
@@ -12,6 +23,7 @@
       <td class="text-xs-right">{{ props.item.country }}</td>
     </template>
   </v-data-table>
+</v-card>
 </template>
 
 <script>
@@ -19,6 +31,7 @@
     export default {
       data () {
       return {
+        search: '',
         headers: [
           {
             text: 'Name',

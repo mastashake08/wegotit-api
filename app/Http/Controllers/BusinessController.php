@@ -17,10 +17,13 @@ class BusinessController extends Controller
     public function index(Request $request)
     {
         //
+        if($request->ajax()){
         $businesses = QueryBuilder::for(Business::class)
                   ->allowedFilters('name','city','state','zip')
                   ->get();
         return response()->json(BusinessResource::collection($businesses));
+        }
+        return view('businesses');
     }
 
     /**

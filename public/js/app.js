@@ -1897,10 +1897,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      search: '',
       headers: [{
         text: 'Name',
         align: 'left',
@@ -38616,40 +38629,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-data-table", {
-    staticClass: "elevation-1",
-    attrs: { headers: _vm.headers, items: _vm.venues },
-    scopedSlots: _vm._u([
-      {
-        key: "items",
-        fn: function(props) {
-          return [
-            _c("td", [
-              _c("a", { attrs: { href: "/venues/" + props.item.id } }, [
-                _vm._v(_vm._s(props.item.name))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.city))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.state))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.zip))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-xs-right" }, [
-              _vm._v(_vm._s(props.item.country))
-            ])
-          ]
-        }
-      }
-    ])
-  })
+  return _c(
+    "v-card",
+    [
+      _c(
+        "v-card-title",
+        [
+          _c("v-text-field", {
+            attrs: {
+              "append-icon": "search",
+              label: "Search",
+              "single-line": "",
+              "hide-details": ""
+            },
+            model: {
+              value: _vm.search,
+              callback: function($$v) {
+                _vm.search = $$v
+              },
+              expression: "search"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("v-data-table", {
+        staticClass: "elevation-1",
+        attrs: { headers: _vm.headers, items: _vm.venues, search: _vm.search },
+        scopedSlots: _vm._u([
+          {
+            key: "items",
+            fn: function(props) {
+              return [
+                _c("td", [
+                  _c("a", { attrs: { href: "/venues/" + props.item.id } }, [
+                    _vm._v(_vm._s(props.item.name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.city))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.state))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.zip))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.country))
+                ])
+              ]
+            }
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
