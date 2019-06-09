@@ -25,7 +25,9 @@ import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 
 Vue.component('venues', require('./components/VenueComponent.vue').default);
 Vue.component('orders', require('./components/OrderComponent.vue').default);
+Vue.component('queued-orders', require('./components/QueuedOrderComponent.vue').default);
 Vue.component('home',require('./components/HomeComponent.vue').default);
+Vue.component('settings',require('./components/SettingsComponent.vue').default);
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default

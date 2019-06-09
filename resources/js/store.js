@@ -22,6 +22,9 @@ export const store = new Vuex.Store({
     },
     deleteOrder(state,index){
       state.orders.splice(index,1);
+    },
+    queueOrder(state, index){
+      state.orders[index].is_queued = true
     }
   },
   actions: {
@@ -49,6 +52,11 @@ export const store = new Vuex.Store({
       axios.post('/api/orders/complete/'+prop.item.id).then(data => {
         context.commit('deleteOrder', prop.index)
       })
+    },
+    queueOrder(context,prop){
+      axios.post('/api/orders/queue/'+prop.item.id).then(data => {
+        context.commit('queueOrder',prop.index)
+      })
     }
   },
   getters: {
@@ -59,7 +67,14 @@ export const store = new Vuex.Store({
       return state.user
     },
     orders: state => {
-      return state.orders
+      return state.orders.filter(order => {
+        return order.is_queued == false
+      })
+    },
+    queuedOrders: state => {
+      return state.orders.filter(order => {
+        return order.is_queued == true
+      })
     }
   }
 })

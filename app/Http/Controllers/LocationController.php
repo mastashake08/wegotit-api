@@ -3,9 +3,8 @@
 namespace WeGotIt\Http\Controllers;
 
 use Illuminate\Http\Request;
-use WeGotIt\Order;
-use WeGotIt\Http\Resources\OrderResource;
-class OrderController extends Controller
+use WeGotIt\WalkUpLocation as Location;
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         //
-        return response()->json(OrderResource::collection(Order::where('is_complete', false)->get()));
+        return response()->json(Location::all());
     }
 
     /**
@@ -37,18 +36,10 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-
         $business = \WeGotIt\Business::findOrFail($request->business_id);
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        $customer = \Stripe\Customer::retrieve($request->user()->customer_id);
-
-        $charge = \Stripe\Charge::create(['amount' => $request->price * 100 , 'currency' => 'usd', 'source' => $customer->source]);
-        $order = $request->user()->orders()->create([
-          'price' => $request->price,
-          'business_id' => $business->id,
-          'description' => $request->items
+        $business->locations()->create([
+          'location' => $request->location
         ]);
-        return response()->json(new OrderResource($order));
     }
 
     /**
@@ -94,19 +85,5 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
-        Order::destroy($id);
-        return response()->json(['message' => 'Success']);
-    }
-
-    public function complete($id){
-      $order = Order::findOrFail($id);
-      $order->is_complete = true;
-      $order->save();
-    }
-
-    public function queueOrder($id){
-      $order = Order::findOrFail($id);
-      $order->is_queued = true;
-      $order->save();
     }
 }

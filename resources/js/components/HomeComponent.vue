@@ -1,11 +1,26 @@
 <template>
   <div>
-  <venues></venues>
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <orders></orders>
+          </div>
+      </div>
+  </div>
+  <br>
+
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <queued-orders></queued-orders>
+          </div>
+      </div>
+  </div>
 </div>
 </template>
 <script>
-  import VenueComponent from './VenueComponent'
   import OrderComponent from './OrderComponent'
+  import QueuedOrderComponent from './QueuedOrderComponent'
   import {mapGetters, mapActions} from 'vuex'
     export default {
       computed: {
@@ -15,8 +30,8 @@
         ...mapActions(['getUser'])
       },
       components:{
-        VenueComponent,
-        OrderComponent
+        OrderComponent,
+        QueuedOrderComponent
       }
     }
 </script>

@@ -22,4 +22,5 @@ Route::post('change-status','UserController@changeStatus')->middleware('auth:api
 
 Route::resource('/venues','BusinessController')->middleware('auth:api');
 Route::resource('/orders','OrderController')->middleware('auth:api');
-Route::post('/orders/complete/{id}','OrderController@complete');
+Route::post('/orders/complete/{id}','OrderController@complete')->middleware('auth:api');
+Route::post('/orders/queue/{id}','OrderController@queueOrder')->middleware('auth:api');

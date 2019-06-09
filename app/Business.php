@@ -16,4 +16,8 @@ class Business extends Model
     public function orders(){
       return $this->hasMany('WeGotIt\Order');
     }
+
+    public function walk_up_locations(){
+      return $this->hasMany('WeGotIt\WalkUpLocation');
+    }
 }

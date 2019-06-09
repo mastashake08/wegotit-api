@@ -11,7 +11,7 @@
    </v-card-title>
   <v-data-table
     :headers="headers"
-    :items="orders"
+    :items="queuedOrders"
     class="elevation-1"
     :search="search"
   >
@@ -29,9 +29,6 @@
         </div>
         <div class="form-group">
           <button class="btn btn-sm btn-danger" @click="deleteOrder(props)">Delete</button>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-sm btn-warning" @click="queueOrder(props)">Queue</button>
         </div>
       </td>
     </template>
@@ -81,13 +78,13 @@
       }
     },
     created(){
-      this.getOrders();
+      
     },
         mounted() {
             console.log('Component mounted.')
         },
         computed:{
-          ...mapGetters(['orders'])
+          ...mapGetters(['queuedOrders'])
         },
         methods: {
           ...mapActions(['getOrders', 'deleteOrder', 'completeOrder', 'queueOrder'])
