@@ -28,7 +28,7 @@
           <button class="btn btn-sm btn-info">Take Over</button>
         </div>
         <div class="form-group">
-          <button class="btn btn-sm btn-danger" @click="deleteOrder(props)">Delete</button>
+          <button class="btn btn-sm btn-danger" @click="deleteOrder(props)">Refund</button>
         </div>
         <div class="form-group">
           <button class="btn btn-sm btn-warning" @click="queueOrder(props)">Queue</button>
