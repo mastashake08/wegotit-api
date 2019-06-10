@@ -15,7 +15,7 @@ class AddStatusToOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->string('orders')->default('pending');
+            $table->string('status')->default('pending');
         });
     }
 

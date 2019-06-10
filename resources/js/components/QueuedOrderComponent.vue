@@ -56,10 +56,10 @@
             value: 'description'
           },
           {
-            text: 'Type',
+            text: 'Service Option',
             align: 'left',
             sortable: false,
-            value: 'type'
+            value: 'service option'
           },
           {
             text: 'Status',
@@ -78,7 +78,7 @@
       }
     },
     created(){
-      
+
     },
         mounted() {
             console.log('Component mounted.')

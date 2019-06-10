@@ -36,6 +36,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('venues') }}">{{ __('Venues') }}</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('orders') }}">{{ __('Orders') }}</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

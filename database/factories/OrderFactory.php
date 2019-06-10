@@ -8,6 +8,6 @@ $factory->define(WeGotIt\Order::class, function (Faker $faker) {
         'user_id' => 1,
         'price' => $faker->randomFloat(2,1,20),
         'description' => $faker->paragraph,
-        'type' => 'pickup'
+        'type' => 'walkup'
     ];
 });

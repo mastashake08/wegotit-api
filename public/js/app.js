@@ -1790,6 +1790,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -1875,10 +1876,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sortable: false,
         value: 'description'
       }, {
-        text: 'Type',
+        text: 'Service Option',
         align: 'left',
         sortable: false,
-        value: 'type'
+        value: 'service option'
       }, {
         text: 'Status',
         align: 'left',
@@ -1972,10 +1973,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sortable: false,
         value: 'description'
       }, {
-        text: 'Type',
+        text: 'Service Option',
         align: 'left',
         sortable: false,
-        value: 'type'
+        value: 'service option'
       }, {
         text: 'Status',
         align: 'left',
@@ -2051,7 +2052,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['user'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getUser'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addLocation'])),
   components: {}
 });
 
@@ -38716,7 +38717,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "text-center" }, [
+    _c("button", { staticClass: "btn btn-danger btn-lg" }, [
+      _vm._v("Help ME!")
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [_c("orders")], 1)
@@ -39034,9 +39039,18 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _c("button", { staticClass: "btn btn-primary" }, [
-                            _vm._v("Add Location")
-                          ])
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              on: {
+                                click: function($event) {
+                                  return _vm.addLocation()
+                                }
+                              }
+                            },
+                            [_vm._v("Add Location")]
+                          )
                         ],
                         1
                       )
@@ -80122,7 +80136,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     queueOrder: function queueOrder(state, index) {
       state.orders[index].is_queued = true;
-    }
+    },
+    addLocation: function addLocation(state) {}
   },
   actions: {
     getVenues: function getVenues(context) {
@@ -80154,6 +80169,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/orders/queue/' + prop.item.id).then(function (data) {
         context.commit('queueOrder', prop.index);
       });
+    },
+    addLocation: function addLocation(context) {
+      context.commit('addLocation');
     }
   },
   getters: {

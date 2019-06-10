@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="text-center">
+    <button class="btn btn-danger btn-lg">Help ME!</button>
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">

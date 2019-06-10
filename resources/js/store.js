@@ -25,6 +25,9 @@ export const store = new Vuex.Store({
     },
     queueOrder(state, index){
       state.orders[index].is_queued = true
+    },
+    addLocation(state){
+
     }
   },
   actions: {
@@ -57,6 +60,9 @@ export const store = new Vuex.Store({
       axios.post('/api/orders/queue/'+prop.item.id).then(data => {
         context.commit('queueOrder',prop.index)
       })
+    },
+    addLocation(context){
+      context.commit('addLocation')
     }
   },
   getters: {

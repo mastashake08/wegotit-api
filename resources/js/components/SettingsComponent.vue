@@ -15,7 +15,7 @@
                      label="Location"
                      required
                    ></v-text-field>
-                   <button class="btn btn-primary">Add Location</button>
+                   <button class="btn btn-primary" v-on:click="addLocation()">Add Location</button>
                  </v-flex>
                </v-layout>
              </v-container>
@@ -38,7 +38,7 @@
         ...mapGetters(['user'])
       },
       methods:{
-        ...mapActions(['getUser'])
+        ...mapActions(['addLocation'])
       },
       components:{}
     }
