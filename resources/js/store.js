@@ -15,7 +15,7 @@ export const store = new Vuex.Store({
       state.venues = venues
       console.log(venues)
     },
-    getuser(state,user){
+    getUser(state,user){
       state.user = user
     },
     getOrders(state,orders){

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Resources\UserResource;
+use WeGotIt\Http\Resources\UserResource;
 /*
 |--------------------------------------------------------------------------
 | API Routes
