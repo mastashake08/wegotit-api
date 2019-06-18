@@ -14,6 +14,7 @@
     :items="queuedOrders"
     class="elevation-1"
     :search="search"
+    items-per-page="6"
   >
     <template v-slot:items="props">
       <td>{{ props.item.price }}</td>
@@ -25,10 +26,10 @@
           <button class="btn btn-sm btn-primary" @click="completeOrder(props)">Complete</button>
         </div>
         <div class="form-group">
-          <button class="btn btn-sm btn-info">Take Over</button>
+          <button class="btn btn-sm btn-info" v-if="user.is_manager">Take Over</button>
         </div>
         <div class="form-group">
-          <button class="btn btn-sm btn-danger" @click="deleteOrder(props)">Delete</button>
+          <button class="btn btn-sm btn-danger" v-if="user.is_manager" @click="deleteOrder(props)">Delete</button>
         </div>
       </td>
     </template>

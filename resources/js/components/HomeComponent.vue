@@ -1,6 +1,10 @@
 <template>
   <div class="text-center">
     <button class="btn btn-danger btn-lg">Help ME!</button>
+    <notify v-if="user.is_manager"></notify>
+    <br>
+    <locations v-if="user.is_manager"></locations>
+    <br>
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">

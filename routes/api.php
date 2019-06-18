@@ -24,3 +24,11 @@ Route::resource('/venues','BusinessController')->middleware('auth:api');
 Route::resource('/orders','OrderController')->middleware('auth:api');
 Route::post('/orders/complete/{id}','OrderController@complete')->middleware('auth:api');
 Route::post('/orders/queue/{id}','OrderController@queueOrder')->middleware('auth:api');
+Route::post('/notifications', function(Request $request){
+  $users = \WeGotIt\User::all();
+  $users->each(function($item, $key) use($request){
+    $item->notify(new \WeGotIt\Notifications\Annoucement($request->message));
+  });
+  return response()->json(200);
+})->middleware('auth:api');
+Route::resource('/locations', 'LocationController')->middleware('auth:api');

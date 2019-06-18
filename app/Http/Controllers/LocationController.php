@@ -36,10 +36,12 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         //
+        $attr = [
+          'location' => $request->name
+        ];
         $business = \WeGotIt\Business::findOrFail($request->business_id);
-        $business->locations()->create([
-          'location' => $request->location
-        ]);
+        $business->locations()->create($attr);
+        return response()->json($attr);
     }
 
     /**

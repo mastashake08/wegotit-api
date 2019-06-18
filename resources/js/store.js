@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
   state: {
     venues: [],
     user: {},
-    orders: []
+    orders: [],
+    locations: []
   },
   mutations: {
     getVenues(state,venues){
@@ -26,8 +27,17 @@ export const store = new Vuex.Store({
     queueOrder(state, index){
       state.orders[index].is_queued = true
     },
-    addLocation(state){
-
+    sendNotification(state){
+      alert('Notification Sent')
+    },
+    addLocation(state, location){
+      state.locations.push(location)
+    },
+    getLocations(state, locations){
+      state.locations = locations;
+    },
+    deleteLocation(state, index){
+      state.locations.splice(index, 1)
     }
   },
   actions: {
@@ -61,8 +71,25 @@ export const store = new Vuex.Store({
         context.commit('queueOrder',prop.index)
       })
     },
-    addLocation(context){
-      context.commit('addLocation')
+    sendNotification(context, message){
+      axios.post('/api/notifications', {message: message}).then(data => {
+        context.commit('sendNotification', data.data)
+      });
+    },
+    addLocation(context, name){
+      axios.post('/api/locations', {business_id: 1, name: name}).then(data => {
+        context.commit('addLocation', data.data);
+      });
+    },
+    getLocations(context){
+      axios.get('/api/locations').then(data => {
+        context.commit('getLocations', data.data)
+      });
+    },
+    deleteLocation(context, prop){
+      axios.delete('/api/locations/'+ prop.item.id).then(data => {
+        context.commit('deleteLocation', prop.index)
+      })
     }
   },
   getters: {
@@ -81,6 +108,9 @@ export const store = new Vuex.Store({
       return state.orders.filter(order => {
         return order.is_queued == true
       })
+    },
+    locations: state => {
+      return state.locations
     }
   }
 })

@@ -47,6 +47,7 @@
                                   <option value="customer">Customer</option>
                                   <option value="runner">Runner</option>
                                   <option value="manager">Manager</option>
+                                  <option value="cook">Cook</option>
                                 </select>
                             </div>
                         </div>
