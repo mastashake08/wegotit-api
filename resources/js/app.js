@@ -28,6 +28,8 @@ Vue.component('orders', require('./components/OrderComponent.vue').default);
 Vue.component('queued-orders', require('./components/QueuedOrderComponent.vue').default);
 Vue.component('home',require('./components/HomeComponent.vue').default);
 Vue.component('settings',require('./components/SettingsComponent.vue').default);
+Vue.component('items', require('./components/ItemsComponent.vue').default);
+Vue.component('add-item', require('./components/AddItemComponent.vue').default);
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
