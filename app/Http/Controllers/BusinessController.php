@@ -55,11 +55,19 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         //
-        $business = Buiness::findOrFail($id);
-        return response()->json(new BusinessResource($business));
+        $business = Business::findOrFail($id);
+        if($request->ajax()){
+
+          return response()->json(new BusinessResource($business));
+      }
+      else{
+        return view('business')->with([
+          'business' => $business
+        ]);
+      }
     }
 
     /**

@@ -20,5 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/settings', 'HomeController@settings')->name('settings');
 Route::get('/venues', 'BusinessController@index')->name('venues');
+Route::get('/venues/{id}','BusinessController@show');
 Route::get('/orders', 'OrderController@index')->name('orders');
 Route::get('/items', 'ItemController@index')->name('items');

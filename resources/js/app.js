@@ -23,7 +23,8 @@ import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('venues', require('./components/VenueComponent.vue').default);
+Vue.component('venues', require('./components/VenuesComponent.vue').default);
+Vue.component('venue', require('./components/VenueComponent.vue').default);
 Vue.component('orders', require('./components/OrderComponent.vue').default);
 Vue.component('queued-orders', require('./components/QueuedOrderComponent.vue').default);
 Vue.component('home',require('./components/HomeComponent.vue').default);
