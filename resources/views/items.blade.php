@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <items></items>        
+            <add-item></add-item>
+            <items></items>
         </div>
     </div>
 </div>

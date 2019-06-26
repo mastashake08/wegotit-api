@@ -15,10 +15,18 @@ class ItemController extends Controller
      public function index(Request $request)
      {
          //
-         $items = QueryBuilder::for(Item::class)
-                   ->allowedFilters('name','type', 'price')
-                   ->get();
-         return response()->json(ItemResource::collection($items));
+         if ($request->ajax())
+        {
+            //
+            $items = QueryBuilder::for(Item::class)
+                      ->allowedFilters('name','type', 'price')
+                      ->get();
+            return response()->json(ItemResource::collection($items));
+        }
+        else{
+          return view('items');
+        }
+
      }
 
     /**
@@ -40,7 +48,9 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $item = $request->user()->business->items()->create($request->all());
+        return response()->json($item);
+
     }
 
     /**

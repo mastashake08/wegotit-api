@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
     venues: [],
     user: {},
     orders: [],
-    locations: []
+    locations: [],
   },
   mutations: {
     getVenues(state,venues){
@@ -41,6 +41,9 @@ export const store = new Vuex.Store({
     },
     updateFee(state, fee){
       state.user.fee
+    },
+    addItem(state, item){
+      state.user.business.items.push(item)
     }
   },
   actions: {
@@ -98,6 +101,11 @@ export const store = new Vuex.Store({
       axios.post('/api/fee', {fee:fee}).then(data => {
         context.commit('updateFee',data.data)
       })
+    },
+    addItem(context, item){
+      axios.post('/api/item', item).then(data => {
+        context.commit('addItem', data.data)
+      })
     }
   },
   getters: {
@@ -122,6 +130,7 @@ export const store = new Vuex.Store({
     },
     fee: state => {
       return state.user.fee
-    }
+    },
+
   }
 })

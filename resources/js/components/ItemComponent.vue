@@ -1,4 +1,4 @@
-<tjemplate>
+<template>
   <v-card>
    <v-card-title>
      <v-text-field
@@ -11,12 +11,12 @@
    </v-card-title>
   <v-data-table
     :headers="headers"
-    :items="items"
+    :items="user.business.items"
     class="elevation-1"
     :search="search"
   >
     <template v-slot:items="props">
-      <td><a :href="'/venues/'+props.item.id">{{ props.item.name }}</a></td>
+      <td>{{ props.item.name }}</td>
       <td class="text-xs-right">{{ props.item.description }}</td>
       <td class="text-xs-right">{{ props.item.type }}</td>
       <td class="text-xs-right">{{ props.item.price }}</td>
@@ -39,44 +39,38 @@
             value: 'name'
           },
           {
-            text: 'City',
+            text: 'Description',
             align: 'left',
             sortable: false,
-            value: 'city'
+            value: 'description'
           },
           {
-            text: 'State',
+            text: 'Type',
             align: 'left',
             sortable: false,
-            value: 'state'
+            value: 'type'
           },
           {
-            text: 'Zip',
+            text: 'Price',
             align: 'left',
             sortable: false,
-            value: 'zip'
-          },
-          {
-            text: 'Country',
-            align: 'left',
-            sortable: false,
-            value: 'country'
+            value: 'price'
           },
         ],
 
       }
     },
     created(){
-      this.getVenues();
+
     },
         mounted() {
-            console.log('Component mounted.')
+
         },
         computed:{
-          ...mapGetters(['venues'])
+          ...mapGetters(['user'])
         },
         methods: {
-          ...mapActions(['getVenues'])
+          ...mapActions([])
         }
     }
 </script>
