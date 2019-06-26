@@ -2482,11 +2482,66 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['venue'],
   data: function data() {
-    return {};
+    return {
+      search: '',
+      headers: [{
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, {
+        text: 'Description',
+        align: 'left',
+        sortable: false,
+        value: 'description'
+      }, {
+        text: 'Type',
+        align: 'left',
+        sortable: false,
+        value: 'type'
+      }, {
+        text: 'Price',
+        align: 'left',
+        sortable: false,
+        value: 'price'
+      }, {
+        text: 'Action',
+        align: 'left',
+        sortable: false,
+        value: 'action'
+      }]
+    };
   },
   created: function created() {},
   mounted: function mounted() {
@@ -40173,7 +40228,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-card", [_c("v-card-title", [_vm._v("venue.name")])], 1)
+  return _c(
+    "v-card",
+    [
+      _c("v-card-title", [_vm._v(_vm._s(_vm.venue.name))]),
+      _vm._v(" "),
+      _c("v-spacer"),
+      _vm._v(" "),
+      _c("v-text-field", {
+        attrs: {
+          "append-icon": "search",
+          label: "Search",
+          "single-line": "",
+          "hide-details": ""
+        },
+        model: {
+          value: _vm.search,
+          callback: function($$v) {
+            _vm.search = $$v
+          },
+          expression: "search"
+        }
+      }),
+      _vm._v(" "),
+      _c("v-data-table", {
+        attrs: {
+          headers: _vm.headers,
+          items: _vm.venue.items,
+          search: _vm.search
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "items",
+            fn: function(props) {
+              return [
+                _c("td", [_vm._v(_vm._s(props.item.name))]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.description))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.type))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-xs-right" }, [
+                  _vm._v(_vm._s(props.item.price))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "text-xs-right" },
+                  [
+                    _c("v-btn", { attrs: { color: "green" } }, [
+                      _vm._v("Add To Cart")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            }
+          },
+          {
+            key: "no-results",
+            fn: function() {
+              return [
+                _c(
+                  "v-alert",
+                  { attrs: { value: true, color: "error", icon: "warning" } },
+                  [
+                    _vm._v(
+                      '\n        Your search for "' +
+                        _vm._s(_vm.search) +
+                        '" found no results.\n      '
+                    )
+                  ]
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

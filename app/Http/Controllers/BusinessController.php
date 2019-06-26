@@ -59,13 +59,15 @@ class BusinessController extends Controller
     {
         //
         $business = Business::findOrFail($id);
+
+
         if($request->ajax()){
 
           return response()->json(new BusinessResource($business));
       }
       else{
         return view('business')->with([
-          'business' => $business
+          'business' => new BusinessResource($business)
         ]);
       }
     }
