@@ -38,6 +38,9 @@ export const store = new Vuex.Store({
     },
     deleteLocation(state, index){
       state.locations.splice(index, 1)
+    },
+    updateFee(state, fee){
+      state.user.fee
     }
   },
   actions: {
@@ -90,6 +93,11 @@ export const store = new Vuex.Store({
       axios.delete('/api/locations/'+ prop.item.id).then(data => {
         context.commit('deleteLocation', prop.index)
       })
+    },
+    updateFee(context, fee){
+      axios.post('/api/fee', {fee:fee}).then(data => {
+        context.commit('updateFee',data.data)
+      })
     }
   },
   getters: {
@@ -111,6 +119,9 @@ export const store = new Vuex.Store({
     },
     locations: state => {
       return state.locations
+    },
+    fee: state => {
+      return state.user.fee
     }
   }
 })

@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-md-8">
+
             <v-form v-model="valid">
              <v-container>
                <v-layout>
@@ -10,40 +8,33 @@
                    md4
                  >
                    <v-text-field
-                     v-model="location"
-                     :rules="locationRules"
-                     label="Location"
+                     v-model="fee"
+                     :rules="feeRules"
+                     :label="user.fee"
                      required
                    ></v-text-field>
-                   <button class="btn btn-primary" v-on:click="addLocation()">Add Location</button>
+                   <button class="btn btn-primary" type="button" v-on:click="updateFee(fee)">Update Fee</button>
                  </v-flex>
                </v-layout>
              </v-container>
            </v-form>
-          </div>
-      </div>
-      <fee></fee>
-  </div>
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import Fee from './FeeComponent'
     export default {
       data: () => ({
         valid: false,
-        location: '',
-        locationRules: [
-          v => !!v || 'Location is required',
+        fee: '',
+        feeRules: [
+          v => !!v || 'Fee is required',
           ],
       }),
       computed: {
         ...mapGetters(['user'])
       },
       methods:{
-        ...mapActions(['addLocation'])
+        ...mapActions(['updateFee'])
       },
-      components:{
-        Fee
-      }
+      components:{}
     }
 </script>

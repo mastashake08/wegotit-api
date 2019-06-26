@@ -20,4 +20,8 @@ class Business extends Model
     public function locations(){
       return $this->hasMany('WeGotIt\WalkUpLocation');
     }
+
+    public function business(){
+      return $this->belongsTo('WeGotIt\User');
+    }
 }

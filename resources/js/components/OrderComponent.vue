@@ -15,8 +15,10 @@
     class="elevation-1"
     :search="search"
     items-per-page="6"
+    :expand="expand"
   >
     <template v-slot:items="props">
+      <tr @click="props.expanded = !props.expanded">
       <td>{{ props.item.price }}</td>
       <td>{{ props.item.description }}</td>
       <td>{{ props.item.type }}</td>
@@ -35,6 +37,15 @@
           <button class="btn btn-sm btn-warning" @click="queueOrder(props)">Queue</button>
         </div>
       </td>
+    </tr>
+    </template>
+    <template v-slot:expand="props">
+      <v-card flat>
+        <v-card-text>Peek-a-boo!</v-card-text>
+      </v-card>
+      <v-card flat>
+        <v-card-text>Peek-a-boo!</v-card-text>
+      </v-card>
     </template>
   </v-data-table>
   </v-card>
@@ -45,6 +56,7 @@
     export default {
       data () {
       return {
+        expand: false,
         search: '',
         headers: [
           {

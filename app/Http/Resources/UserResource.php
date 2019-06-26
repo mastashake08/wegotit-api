@@ -20,7 +20,10 @@ class UserResource extends JsonResource
           'name' => $this->name,
           'email' => $this->name,
           'notifications' => $this->notifications,
-          'status' => $this->status
+          'status' => $this->status,
+          'is_manager' => $this->is_manager,
+          'is_runner' => $this->is_runner,
+          'fee' => $this->fee
         ];
     }
 }

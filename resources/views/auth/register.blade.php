@@ -53,6 +53,54 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="business_name" class="col-md-4 col-form-label text-md-right">{{ __('Business Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_name" type="text" class="form-control" name="business_name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_city" class="col-md-4 col-form-label text-md-right">{{ __('Business City') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_city" type="text" class="form-control" name="business_city" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_state" class="col-md-4 col-form-label text-md-right">{{ __('Business State') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_state" type="text" class="form-control" name="business_state" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_zip" class="col-md-4 col-form-label text-md-right">{{ __('Business Zip') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_zip" type="text" class="form-control" name="business_zip" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_country" class="col-md-4 col-form-label text-md-right">{{ __('Business Country') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_country" type="text" class="form-control" name="business_country" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_fee" class="col-md-4 col-form-label text-md-right">{{ __('Business Fee') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_fee" type="text" class="form-control" name="business_fee" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

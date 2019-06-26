@@ -100,4 +100,10 @@ class BusinessController extends Controller
         //
         Business::destroy($id);
     }
+
+    public function fee(Request $request){
+      $request->user()->fee = $request->fee;
+      $request->user()->save();
+      return response()->json(new \WeGotIt\Http\Resources\UserResource($request->user()));
+    }
 }
