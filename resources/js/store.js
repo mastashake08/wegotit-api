@@ -44,6 +44,9 @@ export const store = new Vuex.Store({
     },
     addItem(state, item){
       state.user.business.items.push(item)
+    },
+    editBusiness(state, business){
+      state.user.business = business
     }
   },
   actions: {
@@ -105,6 +108,11 @@ export const store = new Vuex.Store({
     addItem(context, item){
       axios.post('/api/item', item).then(data => {
         context.commit('addItem', data.data)
+      })
+    },
+    editBusiness(context, business){
+      axios.put('/api/venues/' + business.id, business).then(data => {
+        context.commit('editBusiness', data.data)
       })
     }
   },

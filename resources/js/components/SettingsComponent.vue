@@ -2,7 +2,6 @@
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">
-            <v-form v-model="valid">
              <v-container>
                <v-layout>
                  <v-flex
@@ -15,18 +14,19 @@
                      label="Location"
                      required
                    ></v-text-field>
-                   <button class="btn btn-primary" v-on:click="addLocation()">Add Location</button>
+                   <button class="btn btn-primary" v-on:click="addLocation(location)">Add Location</button>
                  </v-flex>
                </v-layout>
              </v-container>
-           </v-form>
-          </div>
+           </div>
       </div>
-      <fee></fee>
+      <fee v-if="user.is_manager"></fee>
+      <business-settings v-if="user.is_manager"></business-settings>
   </div>
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'
+  import BusinessSettings from './BusinessSettings'
   import Fee from './FeeComponent'
     export default {
       data: () => ({
@@ -43,7 +43,8 @@
         ...mapActions(['addLocation'])
       },
       components:{
-        Fee
+        Fee,
+        BusinessSettings
       }
     }
 </script>

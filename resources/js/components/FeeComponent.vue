@@ -1,7 +1,8 @@
 <template>
-
-            <v-form v-model="valid">
-             <v-container>
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+            <v-container>
                <v-layout>
                  <v-flex
                    xs12
@@ -17,7 +18,9 @@
                  </v-flex>
                </v-layout>
              </v-container>
-           </v-form>
+           </div>
+         </div>
+       </div>
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'
