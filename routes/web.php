@@ -23,3 +23,4 @@ Route::get('/venues', 'BusinessController@index')->name('venues');
 Route::get('/venues/{id}','BusinessController@show');
 Route::get('/orders', 'OrderController@index')->name('orders');
 Route::get('/items', 'ItemController@index')->name('items');
+Route::get('/employees', 'ItemController@index')->name('employees');
