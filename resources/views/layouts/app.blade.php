@@ -42,7 +42,7 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('items') }}">{{ __('Items') }}</a>
                       </li>
-                      @if(auth()->user()->is_manager)
+                      @if(Auth::user()->is_manager)
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('employees') }}">{{ __('Employees') }}</a>
                       </li>
