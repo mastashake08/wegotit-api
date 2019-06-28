@@ -42,6 +42,11 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('items') }}">{{ __('Items') }}</a>
                       </li>
+                      @if(auth()->is_manager)
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('employees') }}">{{ __('Employees') }}</a>
+                      </li>
+                      @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
