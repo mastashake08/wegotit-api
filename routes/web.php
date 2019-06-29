@@ -1,5 +1,5 @@
 <?php
-
+use Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +24,6 @@ Route::get('/venues/{id}','BusinessController@show');
 Route::get('/orders', 'OrderController@index')->name('orders');
 Route::get('/items', 'ItemController@index')->name('items');
 Route::get('/employees', 'ItemController@index')->name('employees');
+Route::get('/.well-known/assetlinks.json', function(){
+  return Storage::get(public_path().'/.well-known/assetlinks.json');
+});
