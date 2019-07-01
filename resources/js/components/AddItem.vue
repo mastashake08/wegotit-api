@@ -68,6 +68,9 @@
     created(){
       this.getUser()
     },
+    computed:{
+      ...mapGetters(['user'])
+    },
     methods: {
           ...mapActions(['addItem', 'getUser'])
         }
