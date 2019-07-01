@@ -44,10 +44,8 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" id="type" name="type">
-                                  <option value="customer">Customer</option>
-                                  <option value="runner">Runner</option>
                                   <option value="manager">Manager</option>
-                                  <option value="cook">Cook</option>
+                                  <option value="customer" disabled>Customer</option>
                                 </select>
                             </div>
                         </div>
@@ -93,7 +91,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="business_fee" class="col-md-4 col-form-label text-md-right">{{ __('Business Fee') }}</label>
+                            <label for="business_fee" class="col-md-4 col-form-label text-md-right">{{ __('Convenience Fee') }}</label>
 
                             <div class="col-md-6">
                                 <input id="business_fee" type="text" class="form-control" name="business_fee" />
