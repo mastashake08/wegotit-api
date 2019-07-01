@@ -58,10 +58,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                              <a class="nav-link" href="{{url('/home')}}">Dashboard</a>
-                              <notifications></notifications>
-                            </li>
                             @if(Auth::user()->is_manager)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('employees') }}">{{ __('Employees') }}</a>
