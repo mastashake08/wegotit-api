@@ -23,7 +23,10 @@ Route::get('/venues', 'BusinessController@index')->name('venues');
 Route::get('/venues/{id}','BusinessController@show');
 Route::get('/orders', 'OrderController@index')->name('orders');
 Route::get('/items', 'ItemController@index')->name('items');
-Route::get('/employees', 'ItemController@index')->name('employees');
+Route::get('/employees', function(){
+  return view('employee');
+})->name('employees');
 Route::get('/.well-known/assetlinks.json', function(){
   return \Storage::get(public_path().'/.well-known-dir/assetlinks.json');
 });
+Route::post('/register-employee', 'HomeController@register')->name('register-employee');
