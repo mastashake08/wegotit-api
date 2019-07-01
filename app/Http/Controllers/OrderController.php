@@ -15,7 +15,12 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         //
-        return response()->json(OrderResource::collection(Order::where('is_complete', false)->get()));
+        if($request->ajax()){
+          return response()->json(OrderResource::collection(Order::where('is_complete', false)->get()));
+        }
+        else{
+          return view('orders');
+        }
     }
 
     /**
