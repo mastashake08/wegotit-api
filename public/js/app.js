@@ -2509,39 +2509,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      valid: false,
-      location: '',
-      locationRules: [function (v) {
-        return !!v || 'Location is required';
-      }]
-    };
-  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['user'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addLocation'])),
   components: {
@@ -40353,62 +40324,6 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c(
-          "div",
-          { staticClass: "col-md-8" },
-          [
-            _c(
-              "v-container",
-              [
-                _c(
-                  "v-layout",
-                  [
-                    _c(
-                      "v-flex",
-                      { attrs: { xs12: "", md4: "" } },
-                      [
-                        _c("v-text-field", {
-                          attrs: {
-                            rules: _vm.locationRules,
-                            label: "Location",
-                            required: ""
-                          },
-                          model: {
-                            value: _vm.location,
-                            callback: function($$v) {
-                              _vm.location = $$v
-                            },
-                            expression: "location"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            on: {
-                              click: function($event) {
-                                return _vm.addLocation(_vm.location)
-                              }
-                            }
-                          },
-                          [_vm._v("Add Location")]
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
       _vm.user.is_manager ? _c("fee") : _vm._e(),
       _vm._v(" "),
       _vm.user.is_manager ? _c("business-settings") : _vm._e()
