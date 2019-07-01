@@ -65,9 +65,11 @@
           ],
       }
     },
-
+    created(){
+      this.getUser()
+    },
     methods: {
-          ...mapActions(['addItem'])
+          ...mapActions(['addItem', 'getUser'])
         }
     }
 </script>

@@ -1833,7 +1833,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return !!v || 'required';
     }]);
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addItem']))
+  created: function created() {
+    this.getUser();
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addItem', 'getUser']))
 });
 
 /***/ }),
