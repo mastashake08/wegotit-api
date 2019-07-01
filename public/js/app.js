@@ -39675,9 +39675,11 @@ var render = function() {
     "div",
     { staticClass: "text-center" },
     [
-      _c("button", { staticClass: "btn btn-danger btn-lg" }, [
-        _vm._v("Help ME!")
-      ]),
+      !_vm.user.is_manager
+        ? _c("button", { staticClass: "btn btn-danger btn-lg" }, [
+            _vm._v("Help ME!")
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm.user.is_manager ? _c("notify") : _vm._e(),
       _vm._v(" "),
