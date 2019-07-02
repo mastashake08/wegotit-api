@@ -9,11 +9,14 @@
   import BusinessSettings from './BusinessSettings'
   import Fee from './FeeComponent'
     export default {
+      created(){
+        this.getUser()
+      },
       computed: {
         ...mapGetters(['user'])
       },
       methods:{
-        ...mapActions(['addLocation'])
+        ...mapActions(['addLocation', 'getUser'])
       },
       components:{
         Fee,

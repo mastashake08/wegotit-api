@@ -2517,8 +2517,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    this.getUser();
+  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['user'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addLocation'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addLocation', 'getUser'])),
   components: {
     Fee: _FeeComponent__WEBPACK_IMPORTED_MODULE_2__["default"],
     BusinessSettings: _BusinessSettings__WEBPACK_IMPORTED_MODULE_1__["default"]
