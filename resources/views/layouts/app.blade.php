@@ -39,9 +39,7 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('orders') }}">{{ __('Orders') }}</a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('items') }}">{{ __('Items') }}</a>
-                      </li>
+
 
                     </ul>
 
@@ -58,11 +56,6 @@
                                 </li>
                             @endif
                         @else
-                            @if(Auth::user()->is_manager)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('employees') }}">{{ __('Employees') }}</a>
-                            </li>
-                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -73,6 +66,9 @@
                                     <a class="dropdown-item" href="{{ route('settings') }}">
                                         {{ __('Business Settings') }}
                                     </a>
+
+                                        <a class="dropdown-item" href="{{ route('items') }}">{{ __('Items') }}</a>
+                                      <a class="dropdown-item" href="{{ route('employees') }}">{{ __('Employees') }}</a>
                                     @else
                                     <a class="dropdown-item" href="{{ route('settings') }}">
                                         {{ __('Settings') }}
