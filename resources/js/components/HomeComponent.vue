@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <button v-if="!user.is_manager" class="btn btn-danger btn-lg">Help ME!</button>
+
     <notify v-if="user.is_manager"></notify>
     <br>
     <locations v-if="user.is_manager"></locations>
