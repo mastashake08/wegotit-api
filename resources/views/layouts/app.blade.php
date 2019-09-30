@@ -69,6 +69,7 @@
 
                                         <a class="dropdown-item" href="{{ route('items') }}">{{ __('Items') }}</a>
                                       <a class="dropdown-item" href="{{ route('employees') }}">{{ __('Employees') }}</a>
+                                      <a class="dropdown-item" href="{{ route('locations') }}">{{ __('Locations') }}</a>
                                     @else
                                     <a class="dropdown-item" href="{{ route('settings') }}">
                                         {{ __('Settings') }}

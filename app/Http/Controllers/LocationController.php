@@ -14,7 +14,13 @@ class LocationController extends Controller
     public function index(Request $request)
     {
         //
-        return response()->json(Location::all());
+        if($request->ajax()){
+          return response()->json(Location::all());
+        }
+        else{
+          return view('locations');
+        }
+
     }
 
     /**

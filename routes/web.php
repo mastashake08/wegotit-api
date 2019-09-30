@@ -30,3 +30,4 @@ Route::get('/.well-known/assetlinks.json', function(){
   return \Storage::get(public_path().'/.well-known-dir/assetlinks.json');
 });
 Route::post('/register-employee', 'HomeController@register')->name('register-employee');
+Route::get('/locations', 'LocationController@index')->name('locations');
