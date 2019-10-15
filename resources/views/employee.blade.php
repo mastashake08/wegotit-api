@@ -46,7 +46,12 @@
                                 <select class="form-control" id="type" name="type">
                                   <option value="runner">Runner</option>
                                   <option value="manager">Manager</option>
+                                  <option value="assistant_manager">Asst. Manager</option>
+                                  <option value="line_worker">Line Worker</option>
                                   <option value="cook">Cook</option>
+                                  <option value="dg_manager">Delivery Group Manager</option>
+                                  <option value="dg_cook">Delivery Group Cook</option>
+                                  <option value="dg_runner">Delivery Group Runner</option>
                                 </select>
                             </div>
                         </div>
