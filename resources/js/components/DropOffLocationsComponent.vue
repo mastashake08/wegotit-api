@@ -4,12 +4,12 @@
       <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-            <h2>Walk Up Locations</h2>
+            <h2>Delivery Locations</h2>
                 <div class="form-group">
-                  <input type="text" placeholder="Located Where" v-model="name" />
+                  <input type="text" placeholder="Chosen Areas Near Landmarks" v-model="name" />
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary" v-on:click="addLocation(name)">Add</button>
+                  <button class="btn btn-primary" v-on:click="addDropOffLocation(name)">Add</button>
                 </div>
                 <v-card>
                  <v-card-title>
@@ -23,7 +23,7 @@
                  </v-card-title>
                 <v-data-table
                   :headers="headers"
-                  :items="locations"
+                  :items="dropofflocations"
                   class="elevation-1"
                   :search="search"
                 >
@@ -71,10 +71,10 @@
             console.log('Component mounted.')
         },
         computed:{
-          ...mapGetters(['locations'])
+          ...mapGetters(['dropofflocations'])
         },
         methods: {
-          ...mapActions(['getLocations', 'deleteLocation', 'addLocation'])
+          ...mapActions(['getDropOffLocations', 'deleteDropOffLocation', 'addDropOffLocation'])
         }
     }
 </script>

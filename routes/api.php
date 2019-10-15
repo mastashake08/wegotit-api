@@ -32,5 +32,6 @@ Route::post('/notifications', function(Request $request){
   return response()->json(200);
 })->middleware('auth:api');
 Route::resource('/locations', 'LocationController')->middleware('auth:api');
+Route::resource('/dropofflocations', 'DropOffLocationController')->middleware('auth:api');
 Route::post('/fee', 'BusinessController@fee')->middleware('auth:api');
 Route::resource('/item', 'ItemController')->middleware('auth:api');

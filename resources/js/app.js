@@ -48,6 +48,7 @@ Vue.component(
 );
 Vue.component('notify', require('./components/Notify.vue').default);
 Vue.component('locations', require('./components/LocationsComponent.vue').default);
+Vue.component('dropoff-locations', require('./components/DropOffLocationsComponent.vue').default);
 Vue.component('notifications', require('./components/Notifications.vue').default);
 Vue.component('items', require('./components/ItemComponent.vue').default);
 Vue.component('add-item', require('./components/AddItem.vue').default);
