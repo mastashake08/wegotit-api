@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     user: {},
     orders: [],
     locations: [],
+    dropofflocations: []
   },
   mutations: {
     getVenues(state,venues){
@@ -38,6 +39,15 @@ export const store = new Vuex.Store({
     },
     deleteLocation(state, index){
       state.locations.splice(index, 1)
+    },
+    addDropOffLocation(state, location){
+      state.dropofflocations.push(location)
+    },
+    getDropOffLocations(state, locations){
+      state.dropofflocations = locations;
+    },
+    deleteDropOffLocation(state, index){
+      state.dropofflocations.splice(index, 1)
     },
     updateFee(state, fee){
       state.user.fee
@@ -90,14 +100,29 @@ export const store = new Vuex.Store({
         context.commit('addLocation', data.data);
       });
     },
+    addDropOffLocation(context, name){
+      axios.post('/api/dropofflocations', {business_id: 1, name: name}).then(data => {
+        context.commit('addDropOffLocation', data.data);
+      });
+    },
     getLocations(context){
       axios.get('/api/locations').then(data => {
         context.commit('getLocations', data.data)
       });
     },
+    getDropOffLocations(context){
+      axios.get('/api/dropofflocations').then(data => {
+        context.commit('getDropOffLocations', data.data)
+      });
+    },
     deleteLocation(context, prop){
       axios.delete('/api/locations/'+ prop.item.id).then(data => {
         context.commit('deleteLocation', prop.index)
+      })
+    },
+    deleteDropOffLocation(context, prop){
+      axios.delete('/api/dropofflocations/'+ prop.item.id).then(data => {
+        context.commit('deleteDropOffLocation', prop.index)
       })
     },
     updateFee(context, fee){
@@ -135,6 +160,9 @@ export const store = new Vuex.Store({
     },
     locations: state => {
       return state.locations
+    },
+    dropofflocations: state => {
+      return state.dropofflocations
     },
     fee: state => {
       return state.user.fee
