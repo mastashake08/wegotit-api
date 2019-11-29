@@ -20,7 +20,7 @@
         <td class="text-xs-right">{{ props.item.description }}</td>
         <td class="text-xs-right">{{ props.item.type }}</td>
         <td class="text-xs-right">{{ props.item.price }}</td>
-        <td class="text-xs-right"><v-btn color="green">Add To Cart</v-btn></td>
+        <td class="text-xs-right"><v-btn color="green" v-on:click="addToCart(props.item)">Add To Cart</v-btn></td>
       </template>
       <template v-slot:no-results>
         <v-alert :value="true" color="error" icon="warning">
@@ -28,7 +28,16 @@
         </v-alert>
       </template>
     </v-data-table>
-
+    <ul>
+      <li v-for="item in order" :key="item.id">
+        {{item.name}} - {{item.price}}
+      </li>
+    </ul>
+    Using card ending in 1234
+    <br>
+    <input type="radio" name="type" value="walkup"> Walk Up<br>
+    <input type="radio" name="type" value="delivery"> Delivery<br>
+    <v-btn v-on:click="addOrder(order)">Pay Now</v-btn>
     </v-card>
 </template>
 
@@ -38,6 +47,7 @@
       props: ['venue'],
       data () {
       return {
+       order:[],
         search: '',
         headers: [
           {
@@ -75,7 +85,7 @@
       }
     },
     created(){
-      
+
     },
         mounted() {
             console.log('Component mounted.')
@@ -84,7 +94,10 @@
           ...mapGetters(['venues'])
         },
         methods: {
-          ...mapActions(['getVenues'])
+          ...mapActions(['getVenues', 'addOrder']),
+          addToCart: function(item){
+           this.order.push(item)
+          }
         }
     }
 </script>

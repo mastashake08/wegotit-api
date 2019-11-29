@@ -2667,11 +2667,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['venue'],
   data: function data() {
     return {
+      order: [],
       search: '',
       headers: [{
         text: 'Name',
@@ -2706,7 +2716,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     console.log('Component mounted.');
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['venues'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getVenues']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getVenues', 'addOrder']), {
+    addToCart: function addToCart(item) {
+      this.order.push(item);
+    }
+  })
 });
 
 /***/ }),
@@ -40641,9 +40655,18 @@ var render = function() {
                   "td",
                   { staticClass: "text-xs-right" },
                   [
-                    _c("v-btn", { attrs: { color: "green" } }, [
-                      _vm._v("Add To Cart")
-                    ])
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "green" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addToCart(props.item)
+                          }
+                        }
+                      },
+                      [_vm._v("Add To Cart")]
+                    )
                   ],
                   1
                 )
@@ -40670,7 +40693,47 @@ var render = function() {
             proxy: true
           }
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.order, function(item) {
+          return _c("li", { key: item.id }, [
+            _vm._v(
+              "\n      " +
+                _vm._s(item.name) +
+                " - " +
+                _vm._s(item.price) +
+                "\n    "
+            )
+          ])
+        }),
+        0
+      ),
+      _vm._v("\n  Using card ending in 1234\n  "),
+      _c("br"),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "radio", name: "type", value: "walkup" } }),
+      _vm._v(" Walk Up"),
+      _c("br"),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "radio", name: "type", value: "delivery" }
+      }),
+      _vm._v(" Delivery"),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        {
+          on: {
+            click: function($event) {
+              return _vm.addOrder(_vm.order)
+            }
+          }
+        },
+        [_vm._v("Pay Now")]
+      )
     ],
     1
   )
@@ -82375,6 +82438,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     queueOrder: function queueOrder(state, index) {
       state.orders[index].is_queued = true;
     },
+    addOrder: function addOrder(state, order) {
+      alert('Order on the way!');
+    },
     sendNotification: function sendNotification(state) {
       alert('Notification Sent');
     },
@@ -82436,6 +82502,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/orders/queue/' + prop.item.id).then(function (data) {
         context.commit('queueOrder', prop.index);
       });
+    },
+    addOrder: function addOrder(context, order) {
+      //axios.post('/api/orders', order).then(data => {
+      context.commit('addOrder', "data.data"); //})
     },
     sendNotification: function sendNotification(context, message) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/notifications', {

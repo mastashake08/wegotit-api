@@ -28,6 +28,9 @@ export const store = new Vuex.Store({
     queueOrder(state, index){
       state.orders[index].is_queued = true
     },
+    addOrder(state, order){
+      alert('Order on the way!')
+    },
     sendNotification(state){
       alert('Notification Sent')
     },
@@ -89,6 +92,11 @@ export const store = new Vuex.Store({
       axios.post('/api/orders/queue/'+prop.item.id).then(data => {
         context.commit('queueOrder',prop.index)
       })
+    },
+    addOrder(context, order){
+      //axios.post('/api/orders', order).then(data => {
+        context.commit('addOrder', "data.data")
+      //})
     },
     sendNotification(context, message){
       axios.post('/api/notifications', {message: message}).then(data => {
