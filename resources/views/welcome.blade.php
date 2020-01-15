@@ -43,16 +43,14 @@
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
-											<h2>Ipsum sed adipiscing</h2>
+											<h2>On demand event food delivery</h2>
 										</header>
-										<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
-										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
-										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
+										<p>{{env('APP_NAME')}} is an on demand app that connects event vendors with customers looking to order food and drink.</p>
 										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn More</a></li>
+											<li><a href="{{url('/venues')}}" class="button">Shop Now</a></li>
 										</ul>
 									</div>
-									<span class="image"><img src="stellar/images/pic01.jpg" alt="" /></span>
+									<span class="image"><img src="https://www.pexels.com/photo/1390940/download/?search_query=fast%2520food&tracking_id=5aax471hhy8" alt="" /></span>
 								</div>
 							</section>
 

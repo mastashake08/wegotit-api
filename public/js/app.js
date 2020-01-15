@@ -1985,6 +1985,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2054,19 +2055,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       valid: false,
-      fee: '',
+      fees: {},
       feeRules: [function (v) {
         return !!v || 'Fee is required';
       }]
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['user'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateFee'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateFees'])),
   components: {}
 });
 
@@ -2218,6 +2227,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -2667,11 +2679,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['venue'],
   data: function data() {
     return {
+      order: [],
       search: '',
       headers: [{
         text: 'Name',
@@ -2706,7 +2728,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     console.log('Component mounted.');
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['venues'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getVenues']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getVenues', 'addOrder']), {
+    addToCart: function addToCart(item) {
+      this.order.push(item);
+    }
+  })
 });
 
 /***/ }),
@@ -39667,47 +39693,6 @@ var render = function() {
             [
               _c("h2", [_vm._v("Delivery Locations")]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name"
-                    }
-                  ],
-                  attrs: {
-                    type: "text",
-                    placeholder: "Chosen Areas Near Landmarks"
-                  },
-                  domProps: { value: _vm.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.name = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: {
-                      click: function($event) {
-                        return _vm.addDropOffLocation(_vm.name)
-                      }
-                    }
-                  },
-                  [_vm._v("Add")]
-                )
-              ]),
-              _vm._v(" "),
               _c(
                 "v-card",
                 [
@@ -39732,6 +39717,47 @@ var render = function() {
                     ],
                     1
                   ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        placeholder: "Add a new location"
+                      },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: {
+                          click: function($event) {
+                            return _vm.addDropOffLocation(_vm.name)
+                          }
+                        }
+                      },
+                      [_vm._v("Add")]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("v-data-table", {
                     staticClass: "elevation-1",
@@ -39820,15 +39846,32 @@ var render = function() {
                       _c("v-text-field", {
                         attrs: {
                           rules: _vm.feeRules,
-                          label: _vm.user.fee,
+                          label:
+                            "Delivery Location Fee - " +
+                            _vm.user.fees.delivery_location_fee,
                           required: ""
                         },
                         model: {
-                          value: _vm.fee,
+                          value: _vm.fees.delivery_location_fee,
                           callback: function($$v) {
-                            _vm.fee = $$v
+                            _vm.$set(_vm.fees, "delivery_location_fee", $$v)
                           },
-                          expression: "fee"
+                          expression: "fees.delivery_location_fee"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          rules: _vm.feeRules,
+                          label: "Seat Fee - " + _vm.user.fees.seat_fee,
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.fees.seat_fee,
+                          callback: function($$v) {
+                            _vm.$set(_vm.fees, "seat_fee", $$v)
+                          },
+                          expression: "fees.seat_fee"
                         }
                       }),
                       _vm._v(" "),
@@ -39839,7 +39882,7 @@ var render = function() {
                           attrs: { type: "button" },
                           on: {
                             click: function($event) {
-                              return _vm.updateFee(_vm.fee)
+                              return _vm.updateFees(_vm.fees)
                             }
                           }
                         },
@@ -40024,44 +40067,6 @@ var render = function() {
             [
               _c("h2", [_vm._v("Walk Up Locations")]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Located Where" },
-                  domProps: { value: _vm.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.name = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: {
-                      click: function($event) {
-                        return _vm.addLocation(_vm.name)
-                      }
-                    }
-                  },
-                  [_vm._v("Add")]
-                )
-              ]),
-              _vm._v(" "),
               _c(
                 "v-card",
                 [
@@ -40086,6 +40091,47 @@ var render = function() {
                     ],
                     1
                   ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        placeholder: "Add a new location"
+                      },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: {
+                          click: function($event) {
+                            return _vm.addLocation(_vm.name)
+                          }
+                        }
+                      },
+                      [_vm._v("Add")]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("v-data-table", {
                     staticClass: "elevation-1",
@@ -40557,8 +40603,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "container" },
+    "v-card",
     [
       _vm.user.is_manager ? _c("fee") : _vm._e(),
       _vm._v(" "),
@@ -40641,9 +40686,18 @@ var render = function() {
                   "td",
                   { staticClass: "text-xs-right" },
                   [
-                    _c("v-btn", { attrs: { color: "green" } }, [
-                      _vm._v("Add To Cart")
-                    ])
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "green" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addToCart(props.item)
+                          }
+                        }
+                      },
+                      [_vm._v("Add To Cart")]
+                    )
                   ],
                   1
                 )
@@ -40670,7 +40724,47 @@ var render = function() {
             proxy: true
           }
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.order, function(item) {
+          return _c("li", { key: item.id }, [
+            _vm._v(
+              "\n      " +
+                _vm._s(item.name) +
+                " - " +
+                _vm._s(item.price) +
+                "\n    "
+            )
+          ])
+        }),
+        0
+      ),
+      _vm._v("\n  Using card ending in 1234\n  "),
+      _c("br"),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "radio", name: "type", value: "walkup" } }),
+      _vm._v(" Walk Up"),
+      _c("br"),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "radio", name: "type", value: "delivery" }
+      }),
+      _vm._v(" Delivery"),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        {
+          on: {
+            click: function($event) {
+              return _vm.addOrder(_vm.order)
+            }
+          }
+        },
+        [_vm._v("Pay Now")]
+      )
     ],
     1
   )
@@ -82375,6 +82469,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     queueOrder: function queueOrder(state, index) {
       state.orders[index].is_queued = true;
     },
+    addOrder: function addOrder(state, order) {
+      alert('Order on the way!');
+    },
     sendNotification: function sendNotification(state) {
       alert('Notification Sent');
     },
@@ -82396,8 +82493,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     deleteDropOffLocation: function deleteDropOffLocation(state, index) {
       state.dropofflocations.splice(index, 1);
     },
-    updateFee: function updateFee(state, fee) {
-      state.user.fee;
+    updateFees: function updateFees(state, fees) {
+      state.user.fees.seat_fee = fees.seat_fee;
+      state.user.fees.delivery_location_fee = fees.delivery_location_fee;
+      alert('Fees Updated!');
     },
     addItem: function addItem(state, item) {
       state.user.business.items.push(item);
@@ -82436,6 +82535,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/orders/queue/' + prop.item.id).then(function (data) {
         context.commit('queueOrder', prop.index);
       });
+    },
+    addOrder: function addOrder(context, order) {
+      //axios.post('/api/orders', order).then(data => {
+      context.commit('addOrder', "data.data"); //})
     },
     sendNotification: function sendNotification(context, message) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/notifications', {
@@ -82480,11 +82583,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         context.commit('deleteDropOffLocation', prop.index);
       });
     },
-    updateFee: function updateFee(context, fee) {
+    updateFees: function updateFees(context, fees) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/fee', {
-        fee: fee
+        fees: fees
       }).then(function (data) {
-        context.commit('updateFee', data.data);
+        context.commit('updateFees', data.data);
       });
     },
     addItem: function addItem(context, item) {
@@ -82521,8 +82624,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     dropofflocations: function dropofflocations(state) {
       return state.dropofflocations;
     },
-    fee: function fee(state) {
-      return state.user.fee;
+    fees: function fees(state) {
+      return state.user.fees;
     }
   }
 });

@@ -23,7 +23,10 @@ class UserResource extends JsonResource
           'status' => $this->status,
           'is_manager' => $this->is_manager,
           'is_runner' => $this->is_runner,
-          'fee' => $this->fee,
+          'fees' => [
+            'seat_fee' => $this->seat_fee,
+            'delivery_location_fee' => $this->delivery_location_fee
+          ],
           'business' => new \WeGotIt\Http\Resources\BusinessResource($this->business)
         ];
     }

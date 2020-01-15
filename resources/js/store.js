@@ -28,6 +28,9 @@ export const store = new Vuex.Store({
     queueOrder(state, index){
       state.orders[index].is_queued = true
     },
+    addOrder(state, order){
+      alert('Order on the way!')
+    },
     sendNotification(state){
       alert('Notification Sent')
     },
@@ -49,8 +52,10 @@ export const store = new Vuex.Store({
     deleteDropOffLocation(state, index){
       state.dropofflocations.splice(index, 1)
     },
-    updateFee(state, fee){
-      state.user.fee
+    updateFees(state, fees){
+      state.user.fees.seat_fee = fees.seat_fee
+      state.user.fees.delivery_location_fee = fees.delivery_location_fee
+      alert('Fees Updated!')
     },
     addItem(state, item){
       state.user.business.items.push(item)
@@ -90,6 +95,11 @@ export const store = new Vuex.Store({
         context.commit('queueOrder',prop.index)
       })
     },
+    addOrder(context, order){
+      //axios.post('/api/orders', order).then(data => {
+        context.commit('addOrder', "data.data")
+      //})
+    },
     sendNotification(context, message){
       axios.post('/api/notifications', {message: message}).then(data => {
         context.commit('sendNotification', data.data)
@@ -125,9 +135,9 @@ export const store = new Vuex.Store({
         context.commit('deleteDropOffLocation', prop.index)
       })
     },
-    updateFee(context, fee){
-      axios.post('/api/fee', {fee:fee}).then(data => {
-        context.commit('updateFee',data.data)
+    updateFees(context, fees){
+      axios.post('/api/fee', {fees:fees}).then(data => {
+        context.commit('updateFees',data.data)
       })
     },
     addItem(context, item){
@@ -164,8 +174,8 @@ export const store = new Vuex.Store({
     dropofflocations: state => {
       return state.dropofflocations
     },
-    fee: state => {
-      return state.user.fee
+    fees: state => {
+      return state.user.fees
     },
 
   }
