@@ -5,12 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
             <h2>Delivery Locations</h2>
-                <div class="form-group">
-                  <input type="text" placeholder="Chosen Areas Near Landmarks" v-model="name" />
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary" v-on:click="addDropOffLocation(name)">Add</button>
-                </div>
+
                 <v-card>
                  <v-card-title>
                    <v-text-field
@@ -21,6 +16,12 @@
                      hide-details
                    ></v-text-field>
                  </v-card-title>
+                 <div class="form-group">
+                   <input type="text" placeholder="Add a new location" v-model="name" />
+                 </div>
+                 <div class="form-group">
+                   <button class="btn btn-primary" v-on:click="addDropOffLocation(name)">Add</button>
+                 </div>
                 <v-data-table
                   :headers="headers"
                   :items="dropofflocations"

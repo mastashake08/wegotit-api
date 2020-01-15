@@ -8,13 +8,21 @@
                    xs12
                    md4
                  >
+
                    <v-text-field
-                     v-model="fee"
+                     v-model="fees.delivery_location_fee"
                      :rules="feeRules"
-                     :label="user.fee"
+                     :label="`Delivery Location Fee - ${user.fees.delivery_location_fee}`"
                      required
                    ></v-text-field>
-                   <button class="btn btn-primary" type="button" v-on:click="updateFee(fee)">Update Fee</button>
+                   <v-text-field
+                     v-model="fees.seat_fee"
+                     :rules="feeRules"
+                     :label="`Seat Fee - ${user.fees.seat_fee}`"
+                     required
+                   ></v-text-field>
+                   <button class="btn btn-primary" type="button" v-on:click="updateFees(fees)">Update Fee</button>
+
                  </v-flex>
                </v-layout>
              </v-container>
@@ -27,7 +35,7 @@
     export default {
       data: () => ({
         valid: false,
-        fee: '',
+        fees: {},
         feeRules: [
           v => !!v || 'Fee is required',
           ],
@@ -36,7 +44,7 @@
         ...mapGetters(['user'])
       },
       methods:{
-        ...mapActions(['updateFee'])
+        ...mapActions(['updateFees'])
       },
       components:{}
     }

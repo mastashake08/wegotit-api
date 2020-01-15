@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <v-card>
       <fee v-if="user.is_manager"></fee>
       <business-settings v-if="user.is_manager"></business-settings>
-  </div>
+  </v-card>
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'

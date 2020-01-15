@@ -112,7 +112,8 @@ class BusinessController extends Controller
     }
 
     public function fee(Request $request){
-      $request->user()->fee = $request->fee;
+      $request->user()->seat_fee = $request->fees['seat_fee'];
+      $request->user()->delivery_location_fee = $request->fees['delivery_location_fee'];
       $request->user()->save();
       return response()->json(new \WeGotIt\Http\Resources\UserResource($request->user()));
     }
