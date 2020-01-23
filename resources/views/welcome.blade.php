@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="stellar/images/logo.svg" alt="" /></span>
+						<span class="logo"><img src="{{url('/logo.svg')}}" alt="WeGotIt Logo" width="350px" height="350px" /></span>
 						<h1>Stellar</h1>
 						<p>Just another free, fully responsive site template<br />
 						built by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a>.</p>
@@ -29,7 +29,7 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="#intro" class="active">Introduction</a></li>
-							<li><a href="#first">First Section</a></li>
+							<li><a href="#first">Features</a></li>
 							<li><a href="#second">Second Section</a></li>
 							<li><a href="#cta">Get Started</a></li>
 						</ul>
@@ -43,7 +43,7 @@
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
-											<h2>On demand event food delivery</h2>
+											<h2>In "Venue" Food Mobile Point of Sale System</h2>
 										</header>
 										<p>{{env('APP_NAME')}} is an on demand app that connects event vendors with customers looking to order food and drink.</p>
 										<ul class="actions">
