@@ -4,6 +4,7 @@
       <div class="row justify-content-center">
           <div class="col-md-8">
               <div class="form-group">
+                <v-card>
                 <v-form v-model="valid" onSubmit="return false;">
                  <v-container>
                    <v-layout>
@@ -39,11 +40,13 @@
                           value="drink"
                         ></v-radio>
                       </v-radio-group>
+                      <v-file-input accept="image/*" label="File input"></v-file-input>
                        <button class="btn btn-primary" v-on:click="addItem(item)">Add Item</button>
                      </v-flex>
                    </v-layout>
                  </v-container>
                </v-form>
+               </v-card>
               </div>
             </div>
           </div>

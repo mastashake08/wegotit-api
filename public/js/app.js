@@ -1821,6 +1821,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'add-item',
@@ -39405,107 +39408,123 @@ var render = function() {
             { staticClass: "form-group" },
             [
               _c(
-                "v-form",
-                {
-                  attrs: { onSubmit: "return false;" },
-                  model: {
-                    value: _vm.valid,
-                    callback: function($$v) {
-                      _vm.valid = $$v
-                    },
-                    expression: "valid"
-                  }
-                },
+                "v-card",
                 [
                   _c(
-                    "v-container",
+                    "v-form",
+                    {
+                      attrs: { onSubmit: "return false;" },
+                      model: {
+                        value: _vm.valid,
+                        callback: function($$v) {
+                          _vm.valid = $$v
+                        },
+                        expression: "valid"
+                      }
+                    },
                     [
                       _c(
-                        "v-layout",
+                        "v-container",
                         [
                           _c(
-                            "v-flex",
-                            { attrs: { xs12: "", md4: "" } },
+                            "v-layout",
                             [
-                              _c("v-text-field", {
-                                attrs: {
-                                  rules: _vm.itemRules,
-                                  label: "Name",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.item.name,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.item, "name", $$v)
-                                  },
-                                  expression: "item.name"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  rules: _vm.itemRules,
-                                  label: "Short Description",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.item.description,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.item, "description", $$v)
-                                  },
-                                  expression: "item.description"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  rules: _vm.itemRules,
-                                  label: "Price",
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.item.price,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.item, "price", $$v)
-                                  },
-                                  expression: "item.price"
-                                }
-                              }),
-                              _vm._v(" "),
                               _c(
-                                "v-radio-group",
-                                {
-                                  model: {
-                                    value: _vm.item.type,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.item, "type", $$v)
-                                    },
-                                    expression: "item.type"
-                                  }
-                                },
+                                "v-flex",
+                                { attrs: { xs12: "", md4: "" } },
                                 [
-                                  _c("v-radio", {
-                                    attrs: { label: "Food", value: "food" }
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: _vm.itemRules,
+                                      label: "Name",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.item.name,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.item, "name", $$v)
+                                      },
+                                      expression: "item.name"
+                                    }
                                   }),
                                   _vm._v(" "),
-                                  _c("v-radio", {
-                                    attrs: { label: "Drink", value: "drink" }
-                                  })
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: _vm.itemRules,
+                                      label: "Short Description",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.item.description,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.item, "description", $$v)
+                                      },
+                                      expression: "item.description"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: _vm.itemRules,
+                                      label: "Price",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.item.price,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.item, "price", $$v)
+                                      },
+                                      expression: "item.price"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-radio-group",
+                                    {
+                                      model: {
+                                        value: _vm.item.type,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.item, "type", $$v)
+                                        },
+                                        expression: "item.type"
+                                      }
+                                    },
+                                    [
+                                      _c("v-radio", {
+                                        attrs: { label: "Food", value: "food" }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("v-radio", {
+                                        attrs: {
+                                          label: "Drink",
+                                          value: "drink"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-file-input", {
+                                    attrs: {
+                                      accept: "image/*",
+                                      label: "File input"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-primary",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.addItem(_vm.item)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Add Item")]
+                                  )
                                 ],
                                 1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.addItem(_vm.item)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Add Item")]
                               )
                             ],
                             1
