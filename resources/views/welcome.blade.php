@@ -19,10 +19,9 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="{{url('/logo.svg')}}" alt="WeGotIt Logo" width="350px" height="350px" /></span>
-						<h1>Stellar</h1>
-						<p>Just another free, fully responsive site template<br />
-						built by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<span class="logo"><img src="{{url('/logo.svg')}}" alt="WeGotIt Logo" width="500px" height="500px" /></span>
+						<h1>{{env('APP_NAME')}}</h1>
+						<p>Get your food at your seat.</p>
 					</header>
 
 				<!-- Nav -->
@@ -30,7 +29,6 @@
 						<ul>
 							<li><a href="#intro" class="active">Introduction</a></li>
 							<li><a href="#first">Features</a></li>
-							<li><a href="#second">Second Section</a></li>
 							<li><a href="#cta">Get Started</a></li>
 						</ul>
 					</nav>
@@ -43,7 +41,7 @@
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
-											<h2>In "Venue" Food Mobile Point of Sale System</h2>
+											<h2>Food Mobile Point of Sale System</h2>
 										</header>
 										<p>{{env('APP_NAME')}} is an on demand app that connects event vendors with customers looking to order food and drink.</p>
 										<ul class="actions">
@@ -57,23 +55,23 @@
 						<!-- First Section -->
 							<section id="first" class="main special">
 								<header class="major">
-									<h2>Magna veroeros</h2>
+									<h2>Features</h2>
 								</header>
 								<ul class="features">
 									<li>
-										<span class="icon major style1 fa-code"></span>
-										<h3>Ipsum consequat</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+										<span class="icon major style1 fa-mobile"></span>
+										<h3>mPOS</h3>
+										<p>{{env('APP_NAME')}} mobile point of sales system makes it easy to accept in app payments for all of your orders.</p>
 									</li>
 									<li>
-										<span class="icon major style3 fa-copy"></span>
-										<h3>Amed sed feugiat</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+										<span class="icon major style3 fa-exclamation"></span>
+										<h3>Push Notifications</h3>
+										<p>Keep your team and the customer in the loop in real time with push notifications. </p>
 									</li>
 									<li>
-										<span class="icon major style5 fa-diamond"></span>
-										<h3>Dolor nullam</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+										<span class="icon major style5 fa-tachometer"></span>
+										<h3>Dashboard</h3>
+										<p>See all your orders and inventory in a sleek dashboard.</p>
 									</li>
 								</ul>
 								<footer class="major">
@@ -83,49 +81,12 @@
 								</footer>
 							</section>
 
-						<!-- Second Section -->
-							<section id="second" class="main special">
-								<header class="major">
-									<h2>Ipsum consequat</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								<ul class="statistics">
-									<li class="style1">
-										<span class="icon fa-code-fork"></span>
-										<strong>5,120</strong> Etiam
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open-o"></span>
-										<strong>8,192</strong> Magna
-									</li>
-									<li class="style3">
-										<span class="icon fa-signal"></span>
-										<strong>2,048</strong> Tempus
-									</li>
-									<li class="style4">
-										<span class="icon fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
-									</li>
-									<li class="style5">
-										<span class="icon fa-diamond"></span>
-										<strong>1,024</strong> Nullam
-									</li>
-								</ul>
-								<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
 
 						<!-- Get Started -->
 							<section id="cta" class="main special">
 								<header class="major">
-									<h2>Congue imperdiet</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
+									<h2>Ready To Get Started?</h2>
+									<p>Whether you are looking for food, convenience or fun {{env('APP_NAME')}}<br /></p>
 								</header>
 								<footer class="major">
 									<ul class="actions special">
@@ -139,13 +100,6 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
-							</ul>
-						</section>
 			         <p class="copyright">&copy; {{env('APP_NAME')}}. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 
