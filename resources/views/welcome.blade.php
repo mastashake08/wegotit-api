@@ -43,7 +43,7 @@
 										<header class="major">
 											<h2>Food Mobile Point of Sale System</h2>
 										</header>
-										<p>{{env('APP_NAME')}} is an on demand app that connects event vendors with customers looking to order food and drink.</p>
+										<p>{{env('APP_NAME')}} is an on demand app that connects event vendors with customers looking to order food, drink and merchandise.</p>
 										<ul class="actions">
 											<li><a href="{{url('/venues')}}" class="button">Shop Now</a></li>
 										</ul>
