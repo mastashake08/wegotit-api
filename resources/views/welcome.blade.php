@@ -86,7 +86,7 @@
 							<section id="cta" class="main special">
 								<header class="major">
 									<h2>Ready To Get Started?</h2>
-									<p>Whether you are looking for food, convenience or fun {{env('APP_NAME')}}<br /></p>
+									<p>Whether you are looking for food, flexibility or fun {{env('APP_NAME')}}<br /></p>
 								</header>
 								<footer class="major">
 									<ul class="actions special">
