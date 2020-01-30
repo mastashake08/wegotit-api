@@ -21,7 +21,7 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="{{url('/logo.svg')}}" alt="WeGotIt Logo" width="500px" height="500px" /></span>
 						<h1>{{env('APP_NAME')}}</h1>
-						<p>Get your food at your seat.</p>
+						<p>Get your food and merchandise while you enjoy the venue, entertainment and friends you came for.</p>
 					</header>
 
 				<!-- Nav -->
